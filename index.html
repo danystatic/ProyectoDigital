@@ -101,6 +101,9 @@ $(function(){
 				console.log(e.token);
 				$('#token').val(e.token);
 				console.log($('#token').val());
+			},
+			error: function(){
+				alert("error");
 			}
 		});
 	});
