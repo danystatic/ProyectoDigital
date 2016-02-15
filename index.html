@@ -90,10 +90,10 @@ $(function(){
 		
 		console.log(email);
 		console.log("hello2)");
-		alert(email);
+		// alert(email);
 
 		$.ajax({
-			url: '/api/login',
+			url: 'http://experimentodigital.tk/api/login',
 			data: {'email':email, 'password':password},
 			type: 'POST',
 			success: function(e){
