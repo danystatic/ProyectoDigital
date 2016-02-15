@@ -1,22 +1,110 @@
+<!DOCTYPE html>
 <html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1,
+width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+	<script src="jQuery/jquery.js" type="text/javascript"></script>
+	<script src="jQuery/jquery.mobile-1.4.5.min.js" type="text/javascript"></script>
+	<script src="customstyles.js" type="text/javascript"></script>
+	<script src="http://experimentodigital.tk/assets/js/dtree.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="jQuery/jquery.mobile-1.4.5.min.css">
+	<link rel="stylesheet" href="customstyles.css">
+
+
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+</head>
 <body>
-<script id="home-tpl" type="text/x-handlebars-template">
-    <div class='header'><h1>Home</h1></div>
-    <div class='search-bar'><input class='search-key' type="text"/></div>
-    <ul class='employee-list'></ul>
+
+	<div data-role="page" class="page" id="login">
+		<div data-role="header"><h1>Nuevo Negocio Digital</h1></div>
+		<div data-role="content">
+			<h1>Construimos juntos un negocio.</h1>
+			<p>Hoy hacemos una Rifa Entre Amigos.</p>
+			<input type="text" id="email"/>
+			<input type="text" id="password"/>
+			<input type="submit" id="login" value="ENTRAR"/>
+			<p>
+			<a href="#intro" data-role="button">Intro</a>
+		</div>
+		<div data-role="footer"><h1>Proyecto Privado</h1></div>
+	</div>
+
+
+	<div data-role="page" class="page" id="home">
+		<div data-role="header"><h1>Bienvenido!</h1></div>
+		<div data-role="content">
+			<h1>Construimos juntos un negocio.</h1>
+			<p>Hoy vamos a comenzar a construir un negocio juntos y te invitamos a que seas parte.</p>
+			<p> Un negocio donde es posible ganar, de una manera justa, transparente y honesta.</p>
+			<p>Esta aplicacion es para explicarte como funciona este proyecto.</p>
+			<br>
+			<div id="mlm"></div>
+			<br>
+			<div id="info"></div>
+			<br>
+			<div id="extra"></div>
+
+		</div>
+		<div data-role="footer"><h1>Proyecto Privado</h1></div>
+	</div>
+
+
+	<div data-role="page" class="page" id="intro">
+		<div data-role="header"><h1>Introduccion</h1></div>
+		<div data-role="content">
+			<h1>Creando Nuestro Negocio</h1>
+			<p>Bienvenido, mi nombre es Daniel Villarreal<br>
+			 <img src="images/DanielGandhi.jpg"/>
+			 </p>
+			 <p><iframe width="560" height="315" src="https://www.youtube.com/embed/OXQB0y0a-w4" frameborder="0" allowfullscreen></iframe></p>
+			 <p>Con el internet, la programacion y el dinero digital, es posible juntos comenzar a construir una empresa/negocio, donde el dinero y la utilidad se reparta de forma automatica utilizando el dinero digital.</p>
+			 <p>Trabaje en Accenture, era encargado de la automatizacion de procesos financieros y si se de lo que estoy hablando, te recomiendo seguir leyendo. </p>
+			 <p>Entonces vamos a combinar la tecnologia, la automatizacion y el dinero digital para construir nuestro negocio que repartira comisiones de manera automatica y con un estilo multinivel que permitira ganar una considerable cantidad de dinero, con una inversion muy baja.</p>
+			 <p>Juntos vamos a reunir un capital economico con el que nos permitira ir avanzando por partes, comenzando por adquirir los servicios basicos y el salario de un empleado.</p>
+			 <p>Asi es, lo primero que necesitamos es reunir lo suficiente para adquirir un par de servicios que ocuparemos y el salario de un empleado que se encargara de crecer nuestro negocio.</p>
+			 <p>La idea de este negocio es que nosotros seamos los socios capitalistas, es decir ponemos el dinero para que alguien mas lo trabaje. Las responsabilidades del socio son solamente 2, una es cumplir con su aportacion y apoyar con unos "Like" para crecer el negocio.</p>
+			 <p>El socio que se quiera involucrar en la administracion del capital, y en las decisiones de lo que hacemos en el negocio, sera bienvenido proporcionalmente a su grado de interes. </p>
+			</p>
+			<a href="#home">Inicio</a>
+		</div>
+		<div data-role="footer"><h1>Proyecto Privado</h1></div>
+	</div>
+
+
+
+<script>
+$(function(){
+	// alert("hello2");
+
+	console.log($('#email').val());
+
+	$('#post_login').click(function(){
+		
+		email = $('#email').val();
+		password = $('#password').val();
+		token = $('#token').val();
+		
+		console.log(email);
+		console.log("hello2)");
+		alert(email);
+
+		$.ajax({
+			url: '/api/login',
+			data: {'email':email, 'password':password},
+			type: 'POST',
+			success: function(e){
+				alert("success");
+				console.log(e.token);
+				$('#token').val(e.token);
+				console.log($('#token').val());
+			}
+		});
+	});
+});
 </script>
-<script id="employee-li-tpl" type="text/x-handlebars-template">
-    {{#.}}
-    <li><a href="#employees/{{this.id}}">{{this.firstName}} {{this.lastName}}<br/>{{this.title}}</a></li>
-    {{/.}}
-</script>
-
-
-<script src="phonegap.js"></script>
-<script src="lib/jquery-1.8.2.min.js"></script>
-<script src="js/storage/memory-store.js"></script>
-<script src="js/main.js"></script>
-<script src="lib/handlebars.js"></script>
-
 </body>
 </html>
